@@ -8,19 +8,11 @@ require_once 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrera Botanicals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <?php require ROOT_DIR . 'components/base_css.php' ?>
 </head>
 <body>
-    <header>
-        <h1>ESTRERA BOTANICALS</h1>
-        <nav>
-            <a class="heading-nav" href="<?= BASE_URL ?>">HOME</a>
-            <a class="heading-nav" href="#none">SHOP</a>
-            <a class="heading-nav" href="#none">BEST SELLERS</a>
-            <a class="heading-nav" href="<?= BASE_URL ?>/about-us">ABOUT US</a>
-            <a class="heading-nav" id="heading-cta-button" href="#none">Shop Now</a>
-        </nav>
-    </header>
+    <!-- an "AHA!" moment here. always loved oop -->
+    <?php require ROOT_DIR . 'components/header.php' ?>
 
     <div class="hero-image-container">
         <img id="img1" src="assets/images/1.png" alt="heading image">
@@ -136,39 +128,6 @@ require_once 'config.php';
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h2>Estrera Botanicals</h2>
-                <div class="footer-socials">
-                    <!-- from online cloudflare link -->
-                    <a href="https://www.facebook.com/owen.estrera1/"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#none"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#none"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#none"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h3>Shop</h3>
-                    <a href="#none">NEW</a>
-                    <a href="#none">SETS</a>
-                    <a href="#none">BUILD YOUR BUNDLE</a>
-                </div>
-                <div class="footer-column">
-                    <h3>Learn</h3>
-                    <a href="#none">ABOUT US</a>
-                    <a href="#none">SUSTAINABILITY</a>
-                    <a href="#none">GET A FREE GIFT</a>
-                </div>
-                <div class="footer-column">
-                    <h3>Help</h3>
-                    <a href="#none">FAQs</a>
-                    <a href="#none">RETURNS</a>
-                    <a href="#none">SHIPPING & DELIVERY</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php require ROOT_DIR . 'components/footer.php' ?>
 </body>
 </html>

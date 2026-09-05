@@ -6,11 +6,20 @@ require_once '../config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="../style.css">
+    <?php require ROOT_DIR . 'components/base_css.php' ?>
+    
     
 </head>
 <body>
-    <!-- remember wen, every page's header is not the same -->
+    <!-- an "AHA!" moment here. always loved oop -->
+    <!-- header -->
     <?php require ROOT_DIR . 'components/header.php' ?>
+    
+
+    <section class="about-us-image-container">
+
+    </section>
+
+    <?php require ROOT_DIR . 'components/footer.php'?>
 </body>
 </html>

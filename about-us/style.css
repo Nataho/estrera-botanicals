@@ -1,0 +1,20 @@
+@import url('../style.css');
+
+.hero-image-container,
+.extra-image-container,
+.about-us-image-contrainer {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.hero-image-container img,
+.extra-image-container img,
+.about-us-image-contrainer img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
