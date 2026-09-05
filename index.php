@@ -1,3 +1,6 @@
+<?php
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +14,10 @@
     <header>
         <h1>ESTRERA BOTANICALS</h1>
         <nav>
+            <a class="heading-nav" href="<?= BASE_URL ?>">HOME</a>
             <a class="heading-nav" href="#none">SHOP</a>
             <a class="heading-nav" href="#none">BEST SELLERS</a>
-            <a class="heading-nav" href="#none">ABOUT US</a>
+            <a class="heading-nav" href="<?= BASE_URL ?>/about-us">ABOUT US</a>
             <a class="heading-nav" id="heading-cta-button" href="#none">Shop Now</a>
         </nav>
     </header>
