@@ -408,3 +408,33 @@ footer {
 .footer-column a:hover {
     opacity: 1;
 }
+
+/* have multiple colors */
+.palette-overlay {                                                                                                                                                                                           
+    position: absolute;                                                                                                                                                                                      
+    top: 0;                                                                                                                                                                                                  
+    bottom: 0;                                                                                                                                                                                               
+    left: 20px;                                                                                                                                                                                              
+    right: 20px;                                                                                                                                                                                             
+    background-color: rgba(43, 80, 46, 0.55);                                                                                                                                                                
+    border-radius: 12px;
+    pointer-events: none;
+}     
+
+.palette-overlay.blur {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.palette-overlay.dark-green {
+    background-color: rgba(43, 80, 46, 0.70);
+}
+
+.palette-overlay.light-green {
+    background-color: rgba(131, 162, 126, 0.70);
+}
+
+.palette-overlay.dirty-white {
+    background-color: rgba(249, 245, 236, 0.33);
+}
+
