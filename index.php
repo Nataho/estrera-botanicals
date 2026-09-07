@@ -1,6 +1,14 @@
 <?php
-require_once 'config.php';
+    require_once 'config.php';
+    session_start();
+    // $_SESSION['user_id'] = $id;
+
+    if (isset($_SESSION['logged_in'])){
+        header('location: shop');
+    }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
