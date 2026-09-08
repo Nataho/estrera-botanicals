@@ -1,47 +1,70 @@
+/* Import universal base styles from the parent directory */
 @import url('../style.css');
 
-.hero-image-container,
-.extra-image-container,
-.about-us-image-container {
-    position: relative;
-    width: 92%;
-    max-width: var(--container-max-width, 1520px);
-    margin: 20px auto;
-    padding: 0;
-}
+/* ==========================================================================
+   ABOUT US - SPECIFIC OVERRIDES & EXTENSIONS
+   ========================================================================== */
 
-.hero-image-container img,
-.extra-image-container img,
-.about-us-image-container img {
-    width: 100%;
-    max-height: 520px;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-}
-
-/* pang center text */
-/* probably reusable */
-.overlay-content.center {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    align-items: center;
-}
-
-.overlay-content.center h1 {
-    color: var(--palette-dirty-white);
+/* Hero text adjustments for the about us banner */
+.about-us-image-container .overlay-content.center h1 {
     font-size: 2.8rem;
-    line-height: 1.2;
-    /* text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6); */
+    color: var(--palette-dirty-white);
 }
 
-.overlay-content.center p {
-    max-width: 55ch; 
-    margin: 0 auto;
-    text-wrap: balance;
+.about-us-image-container .overlay-content.center p {
+    max-width: 55ch;
     color: #1e3321;
     font-size: 1.15rem;
-    line-height: 1.6;
     font-weight: 500;
+}
+
+/* ==========================================================================
+   MISSION SECTION
+   ========================================================================== */
+#mission-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+#mission-section .section-heading {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+#mission-description {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    text-align: center;
+    font-family: var(--document-font);
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--palette-gray);
+    text-wrap: balance;
+}
+
+/* ==========================================================================
+   FOUNDER CARD OVERRIDES
+   Base layout is inherited from .spotlight-section / .profile-section in style.css.
+   Here we wrap it in a custom About Us card and override specific tokens if desired.
+   ========================================================================== */
+.founder-card-wrapper {
+    background-color: var(--palette-white);
+    border-radius: 20px;
+    padding: 48px;
+    border: 1px solid rgba(131, 162, 126, 0.18);
+    box-shadow: 0 12px 35px rgba(43, 80, 46, 0.06);
+    max-width: 960px;
+    margin: 0 auto;
+    --photo-size: 260px;
+}
+
+@media (max-width: 768px) {
+    .founder-card-wrapper {
+        padding: 30px 20px;
+    }
+
+    #mission-description {
+        font-size: 1.05rem;
+    }
 }

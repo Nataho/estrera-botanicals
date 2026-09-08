@@ -1,13 +1,14 @@
 <?php
 require_once '../config.php';
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <?php require ROOT_DIR . 'components/base_css.php' ?>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <!-- an "AHA!" moment here. always loved oop -->
@@ -27,16 +28,13 @@ require_once '../config.php';
             <p>Truth is a commodity that we’ve been trading in since day one. We’re here to help you find your truth within your skincare routine. That’s true love. That’s true beauty. Applied daily.</p>
         </div>
     </section>
-
     <!-- Mission -->
-    <section class="section-wrapper">
-        <div class="center">
-            <h1>Mission</h1>
-            <p>Estrera Botanicals formulates clean, 100% plant-based
-                body care to heal and protect skin using organic
-                ingredients. Its mission is to eliminate synthetics, make
-                holistic wellness accessible, and promote sustainable beauty</p>
-        </div>
+    <section class="section-wrapper" id="mission-section">
+        <h1 class="section-heading">Mission</h1>
+        <p id="mission-description">Estrera Botanicals formulates clean, 100% plant-based
+            body care to heal and protect skin using organic
+            ingredients. Our mission is to eliminate synthetics, make
+            holistic wellness accessible, and promote sustainable beauty.</p>
     </section>
 
     <!-- idk if apilon ba ni lol -->
@@ -45,10 +43,26 @@ require_once '../config.php';
         <p>Estrera Botanicals does not have a</p>
     </section> -->
 
+    <!-- Founder / Spotlight Section -->
     <section class="section-wrapper">
-        <!-- picture ni owen diri dapita -->
-        <h1>Our Truth-Seeking Founder</h1>
-        <p>Owen Estrera</p>
+        <div class="founder-card-wrapper">
+            <div class="spotlight-section">
+                <div class="spotlight-photo-container">
+                    <img class="spotlight-photo" src="<?= BASE_URL ?>assets/images/owner.jpg" alt="Owen Estrera - Founder">
+                </div>
+                <div class="spotlight-message">
+                    <span class="spotlight-badge">Founder's Note</span>
+                    <h1>Our Truth-Seeking Founder</h1>
+                    <blockquote class="spotlight-quote">
+                        "We founded Estrera Botanicals on a simple conviction: skincare should be genuinely honest, nourishing, and rooted in nature's purest botanicals. Every formulation is crafted to reveal your skin's truest, healthiest glow."
+                    </blockquote>
+                    <div class="spotlight-details">
+                        <p class="spotlight-name">Owen Estrera</p>
+                        <p class="spotlight-role">Founder & Chief Formulator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 

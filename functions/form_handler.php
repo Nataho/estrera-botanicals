@@ -1,114 +1,65 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+// form handler - catches posts and routes to the right function
+
+require_once ROOT_DIR . 'database/config.php';
+require_once ROOT_DIR . 'functions/auth.php';
+require_once ROOT_DIR . 'functions/validation.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $request_type = $_POST['request_type'] ?? '';
 
-    //login
-    $u_input = $_POST['user_input'] ?? '';
-    $u_pass = $_POST['password'] ?? ''; //also in register
+    switch ($request_type) {
+        case 'login':
+            $u_input = trim($_POST['user_input'] ?? '');
+            $u_pass  = $_POST['password'] ?? '';
 
-    //register
-    $u_name = $_POST['username'] ?? '';
-    $u_email = $_POST['email'] ??'';
-    $u_vpass = $_POST['valid_password'] ?? '';
+            if (empty($u_input) || empty($u_pass)) {
+                $login_error = "Please fill in all fields.";
+                break;
+            }
 
-    if ($request_type == "login") {
-        if (login($dbcon, $u_input, $u_pass)) {
-            header('location: ../auth-success?type=login');
-            exit;
-        } else {
-            $login_error = "Invalid username or password.";
-        }
-    }
-    
-    if ($request_type == "signup") {
-        $signup_result = signup($dbcon, $u_name, $u_email, $u_pass, $u_vpass);
+            if (current_user()->login($u_input, $u_pass)) {
+                header('Location: ../auth-success?type=login');
+                exit;
+            } else {
+                $login_error = "Invalid username or password.";
+            }
+            break;
 
-        if ($signup_result === true) {
-            login($dbcon, $u_name, $u_pass);
-            header("location: ../auth-success?type=signup");
-            exit;
-        } else {
-            $signup_err = $signup_result;
-        }
-    }
-}
+        case 'signup':
+            $u_name  = trim($_POST['username'] ?? '');
+            $u_email = trim($_POST['email'] ?? '');
+            $u_pass  = $_POST['password'] ?? '';
+            $u_vpass = $_POST['valid_password'] ?? '';
 
-function check_login_mode(){
+            // check in memory first so we don't bother the database
+            if (empty($u_name) || empty($u_email) || empty($u_pass)) {
+                $signup_err = "All fields are required.";
+                break;
+            }
 
-}
+            $email_err = validateEmailFormat($u_email);
+            if ($email_err !== null) {
+                $signup_err = $email_err;
+                break;
+            }
 
-//asks can both ask for username and user email
-function login($dbcon, $user_input, $password) {
+            if ($u_pass !== $u_vpass) {
+                $signup_err = "Passwords do not match.";
+                break;
+            }
 
-    if (filter_var($user_input, FILTER_VALIDATE_EMAIL)) {
-        // Search by email
-        $sql = "SELECT * FROM users WHERE user_email = ?";
-    } else {
-        // Search by username
-        $sql = "SELECT * FROM users WHERE user_name = ?";
-    }
+            // create account and log them straight in
+            $signup_result = register_user($pdo, $u_name, $u_email, $u_pass);
 
-    $statement = $dbcon->prepare($sql);
-    if (!$statement) return false; 
-    
-    $statement->bind_param("s", $user_input);
-    $statement->execute();
-    $result = $statement->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        if (password_verify($password, $row['user_password'])) {
-            $_SESSION['logged_in'] = true;
-            $_SESSION['user_name'] = $row['user_name'];
-            $_SESSION['user_id'] = $row['user_id'] ?? null; 
-            
-            $statement->close();
-            return true;
-        }
-    } 
-    $statement->close();
-    return false;
-}
-
-function signup($dbcon, $username, $email, $password, $confirm_password) {
-    $check_st = $dbcon->prepare("SELECT user_email FROM users WHERE user_email = ?");
-    
-    if (!$check_st) {
-        return "SQL Error: " . $dbcon->error; 
-    }
-
-    $check_st->bind_param("s", $email);
-    $check_st->execute();
-    $result = $check_st->get_result();
-
-    if ($result->num_rows > 0){
-        $check_st->close();
-        return "An account using this email already exsists.";
-    }
-
-    if ($password != $confirm_password) {
-        $check_st->close();
-        return "Passwords do not match";
-    }
-
-    $check_st->close();
-
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    $insert_st = $dbcon->prepare('INSERT INTO users (user_name, user_email, user_password) VALUES (? , ?, ?)');
-    
-    // Catch SQL errors on the INSERT query
-    if (!$insert_st) {
-        return "SQL Error: " . $dbcon->error;
-    }
-
-    $insert_st->bind_param('sss', $username, $email, $hashed_password);
-
-    if ($insert_st->execute()) {
-        $insert_st->close();
-        return true; 
-    } else {
-        $insert_st->close();
-        return "Database error during registration: " . $dbcon->error;
+            if ($signup_result === true) {
+                current_user()->login($u_name, $u_pass);
+                header('Location: ../auth-success?type=signup');
+                exit;
+            } else {
+                $signup_err = $signup_result;
+            }
+            break;
     }
 }
 ?>

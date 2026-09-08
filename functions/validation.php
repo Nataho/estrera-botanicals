@@ -1,7 +1,7 @@
 <?php
 
 function validateEmailFormat(string $value): ?string {
-	return filter_var($value, FILTER_VALIDATE_EMAIL) ? null : 'enter a valid password';
+	return filter_var($value, FILTER_VALIDATE_EMAIL) ? null : 'Please enter a valid email address.';
 }
 
 function validateIntRange(string $value, string $label, int $min, int $max): ?string

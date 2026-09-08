@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../config.php';
 
 $auth_type = $_GET['type'] ?? 'login';
@@ -11,14 +10,21 @@ if ($auth_type === 'signup') {
     $subtext = !empty($user_name) 
         ? "Welcome, <strong>" . htmlspecialchars($user_name) . "</strong>! Your account has been registered successfully."
         : "Your account has been registered successfully. Welcome to pure, botanical skincare.";
-}
-else {
+} else {
     $badge_text = "Signed In Successfully";
-    $heading = "Welcome Back!";
-    $subtext = !empty($user_name)
-    // strong = bold
-        ? "Hello, <strong>" . htmlspecialchars($user_name) . "</strong>! You have successfully signed in to your account."
-        : "You have successfully signed in to your account.";
+    $user_role = $_SESSION['user_role'] ?? 'customer';
+    
+    if ($user_role === 'admin') {
+        $heading = "Admin Dashboard Ready!";
+        $subtext = !empty($user_name)
+            ? "Welcome back, <strong>" . htmlspecialchars($user_name) . "</strong>! Ready to review today's botanical orders and manage the shop inventory?"
+            : "Welcome back, Admin! Ready to manage the shop today?";
+    } else {
+        $heading = "Welcome Back!";
+        $subtext = !empty($user_name)
+            ? "Hello, <strong>" . htmlspecialchars($user_name) . "</strong>! You have successfully signed in to your account."
+            : "You have successfully signed in to your account.";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +33,6 @@ else {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $heading ?> | Estrera Botanicals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <?php require ROOT_DIR . 'components/base_css.php'; ?>
 </head>
 <body class="auth-page">

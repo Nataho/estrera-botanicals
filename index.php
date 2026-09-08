@@ -1,20 +1,12 @@
 <?php
-    require_once 'config.php';
-    session_start();
-    // $_SESSION['user_id'] = $id;
-
-    if (isset($_SESSION['logged_in'])){
-        header('location: shop');
-    }
+require_once 'config.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrera Botanicals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <?php require ROOT_DIR . 'components/base_css.php' ?>
 </head>
 <body>
@@ -26,7 +18,7 @@
         <div class="overlay-content">
             <h1>Chebula Active Serum</h1>
             <p>A clinically proven serum that works at the cellular level to boost <br>your skin s natural collagen for more radiant, resilient skin.</p>
-            <a class="btn" href="#none"> Shop Now</a>
+            <a class="btn" href="<?= BASE_URL ?>shop"> Shop Now</a>
         </div>
     </div>
 
@@ -65,14 +57,14 @@
                 <img src="assets/images/6.png" alt="Sensitive Skin">
                 <div class="concern-content">
                     <h2>Sensitive Skin</h2>
-                    <a href="#none">Shop Now</a>
+                    <a href="<?= BASE_URL ?>shop">Shop Now</a>
                 </div>
             </div>
             <div class="concern-card">
                 <img src="assets/images/7.png" alt="Breakouts & Blemishes">
                 <div class="concern-content">
                     <h2>Breakouts & Blemishes</h2>
-                    <a href="#none">Shop Now</a>
+                    <a href="<?= BASE_URL ?>shop">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -85,7 +77,7 @@
             <h1>Midnight Recovery Oil</h1>
             <p id="ingredients">Bloe Tansy & Jojova Infusion</p>
             <p>30ml | 1.08oz</p>
-            <a class="btn" href="#none">Shop Now</a>
+            <a class="btn" href="<?= BASE_URL ?>shop">Shop Now</a>
         </div>
     </section>
 
@@ -130,7 +122,7 @@
         <div class="section-wrapper" id="center-all">
             <h1 id="fifth-heading" class="section-heading">Become a Prototype Tester!</h1>
             <p id="prototype-description">Testing breakthrough plant gear and biotech innovations<br>for Estrera Botanicals to optimize global growth and<br>sustainability</p>
-            <a class="btn" href="#none" id="apply-button">Apply Now</a>
+            <a class="btn" href="#none" id="apply-button">Coming Soon</a>
         </div>
     </section>
 

@@ -1,13 +1,9 @@
 <?php 
-session_start();
-
 require_once '../config.php';
-require_once '../functions/form_handler.php';
+require_once ROOT_DIR . 'functions/auth.php';
+require_once ROOT_DIR . 'functions/form_handler.php';
 
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    header('Location: ' . BASE_URL . 'shop');
-    exit;
-}
+require_guest('shop');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +11,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Estrera Botanicals</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <?php require ROOT_DIR . 'components/base_css.php'; ?>
 </head>
 <body class="auth-page">

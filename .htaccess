@@ -1,0 +1,2 @@
+ErrorDocument 404 /estrera-botanicals/error.php?code=404
+ErrorDocument 403 /estrera-botanicals/error.php?code=403

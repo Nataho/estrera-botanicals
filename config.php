@@ -7,11 +7,15 @@ $web_path = str_replace($docRoot, '', $dir);
 define('BASE_URL', $web_path . '/');
 define('ROOT_DIR', __DIR__ . '/');
 
-// Establish the connection
-$dbcon = mysqli_connect("localhost", "root", "", "eb_shop");
+// db credentials
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'eb_shop');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_CHARSET', 'utf8mb4');
 
-// Halt execution if the connection fails
-if (!$dbcon) {
-    die("Connection failed: " . mysqli_connect_error());
+// start session everywhere so we don't have to call session_start() on every single page
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 ?>
