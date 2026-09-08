@@ -87,29 +87,29 @@ require_once 'config.php';
         <div class="feedback-container">
 
             <div class="feedback-card">
-                <h2>"A terrific piece of praise"</h2>
+                <h2>"Amazing natural skincare! My sensitive skin feels so soft."</h2>
                 <div class="profile">
-                    <img src="" alt="sheena">
+                    <img src="assets/images/sam.png" alt="sam">
                     <div>
-                        <p class="profile-name">Sheena F. Rentuaya</p>
+                        <p class="profile-name">Sam Rich John L. Orcullo</p>
                         <p>Customer</p>
                     </div>
                 </div>
             </div>
             <div class="feedback-card">
-                <h2>"A terrific piece of praise"</h2>
+                <h2>"My skin feels bouncier and looks brighter"</h2>
                 <div class="profile">
-                    <img src="" alt="sheena">
+                    <img src="assets/images/enric.png" alt="enric">
                     <div>
-                        <p class="profile-name">Sheena F. Rentuaya</p>
+                        <p class="profile-name">Enric Myg O. Teope</p>
                         <p>Customer</p>
                     </div>
                 </div>
             </div>
             <div class="feedback-card">
-                <h2>"A terrific piece of praise"</h2>
+                <h2>"All these products smell so nice"</h2>
                 <div class="profile">
-                    <img src="" alt="sheena">
+                    <img src="assets/images/sheena.png" alt="sheena">
                     <div>
                         <p class="profile-name">Sheena F. Rentuaya</p>
                         <p>Customer</p>

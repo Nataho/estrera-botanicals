@@ -688,6 +688,15 @@ footer {
     margin: 0;
 }
 
+.profile img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--palette-light-green); /* Uses your existing variable */
+    flex-shrink: 0; /* Prevents the image from squishing */
+}
+
 @media (max-width: 768px) {
     .profile-section,
     .spotlight-section,
@@ -712,3 +721,4 @@ footer {
         padding-top: 14px;
     }
 }
+
