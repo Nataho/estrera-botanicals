@@ -1,35 +1,86 @@
 <?php
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
+
 require_once '../config.php';
 require_once '../functions/form_handler.php';
 
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    header('Location: ' . BASE_URL . 'shop');
+    exit;
+}
 ?>
-
-<?php if (!empty($signup_err)) echo "<p style='color:red;'>$signup_err</p>"; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <?php require ROOT_DIR . 'components/base_css.php' ?>
-
-
+    <title>Sign Up | Estrera Botanicals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <?php require ROOT_DIR . 'components/base_css.php'; ?>
 </head>
-<body>
-    <h1>sign up</h1>
-    <form method="POST">
-        <input type="hidden" name="request_type" value="signup">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        
-        <button type="submit" name="signup">Sign Up</button>
-        <a href="<?= BASE_URL ?>login"> Already have an Account? </a>
-    </form>
+<body class="auth-page">
+    <?php require ROOT_DIR . 'components/header.php'; ?>
+
+    <main class="auth-page-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <span class="brand-badge">Join Estrera Botanicals</span>
+                <h1>Create Account</h1>
+                <p>Experience clean, botanical body care formulated for real results</p>
+            </div>
+
+            <?php if (!empty($signup_err)): ?>
+                <div class="auth-alert-error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span><?= htmlspecialchars($signup_err) ?></span>
+                </div>
+            <?php endif; ?>
+
+            <form class="auth-form" method="POST" action="">
+                <input type="hidden" name="request_type" value="signup">
+
+                <div class="auth-form-group">
+                    <label for="username">Username</label>
+                    <div class="auth-input-wrapper">
+                        <i class="fa-solid fa-user auth-input-icon"></i>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required autofocus>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="email">Email Address</label>
+                    <div class="auth-input-wrapper">
+                        <i class="fa-solid fa-envelope auth-input-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="password">Password</label>
+                    <div class="auth-input-wrapper">
+                        <i class="fa-solid fa-lock auth-input-icon"></i>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <label for="valid_password">Confirm Password</label>
+                    <div class="auth-input-wrapper">
+                        <i class="fa-solid fa-shield-halved auth-input-icon"></i>
+                        <input type="password" id="valid_password" name="valid_password" placeholder="Re-enter your password" required>
+                    </div>
+                </div>
+
+                <button type="submit" name="signup" class="auth-btn-submit">Register Account</button>
+            </form>
+
+            <div class="auth-footer-nav">
+                Already have an account?
+                <a href="<?= BASE_URL ?>login">Sign in</a>
+            </div>
+        </div>
+    </main>
+
+    <?php require ROOT_DIR . 'components/footer.php'; ?>
 </body>
 </html>

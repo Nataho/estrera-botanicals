@@ -22,6 +22,8 @@
 
     --heading-font: 'Heading', serif;
     --document-font: 'Document', serif;
+
+    --container-max-width: 1520px;
 }
 
 body {
@@ -33,23 +35,30 @@ body {
 
 /* Reusable button */
 .btn {
-    font-size: 1.5rem;
-    padding: 20px;
+    font-size: 1rem;
+    padding: 12px 28px;
     display: inline-block;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 8px;
     width: fit-content;
     color: var(--palette-white);
     font-family: var(--document-font);
+    font-weight: 600;
     background-color: var(--palette-black);
+    transition: all 0.25s ease;
+}
+
+.btn:hover {
+    background-color: var(--palette-dark-green);
+    transform: translateY(-1px);
 }
 
 /* Reusable section heading */
 .section-heading {
     font-family: var(--heading-font);
     color: var(--palette-dark-green);
-    font-size: 2.2rem;
-    margin: 0 0 24px 0;
+    font-size: 1.85rem;
+    margin: 0 0 20px 0;
 }
 
 /* HEADER */
@@ -57,7 +66,7 @@ header {
     font-family: var(--heading-font);
     background-color: var(--palette-dark-green);
     color: var(--palette-dirty-white);
-    padding: 20px 5%;
+    padding: 14px 4%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,23 +74,26 @@ header {
 
 header h1 {
     margin: 0;
+    font-size: 1.45rem;
+    letter-spacing: 0.5px;
 }
 
 .heading-nav {
-    font-size: 1rem;
-    padding: 10px 20px;
+    font-size: 0.88rem;
+    padding: 8px 16px;
     display: inline-block;
     text-decoration: none;
     border-radius: 20px;
     color: var(--palette-dirty-white);
     font-family: var(--document-font);
+    font-weight: 500;
 }
 
 #heading-cta-button {
     background-color: var(--palette-dirty-white);
     color: var(--palette-dark-green);
-    border-radius: 10px;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #heading-cta-button:hover {
@@ -93,16 +105,17 @@ header h1 {
 .hero-image-container,
 .extra-image-container {
     position: relative;
-    width: 100%;
-    max-width: 1200px;
+    width: 92%;
+    max-width: var(--container-max-width);
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .hero-image-container img,
 .extra-image-container img {
     width: 100%;
-    height: auto;
+    max-height: 520px;
+    object-fit: cover;
     display: block;
     border-radius: 12px;
 }
@@ -111,37 +124,43 @@ header h1 {
 .overlay-content {
     position: absolute;
     top: 50%;
-    left: 60px;
+    left: 54px;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     text-align: left;
-    gap: 16px;
+    gap: 12px;
+    max-width: 540px;
 }
 
 .overlay-content h1 {
-    font-size: 3rem;
+    font-size: 2.3rem;
     font-family: var(--heading-font);
+    line-height: 1.15;
     margin: 0;
 }
 
 .overlay-content p {
     font-family: var(--document-font);
     color: var(--palette-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin: 0;
 }
 
 #ingredients {
-    font-size: 1.7rem;
+    font-size: 1.15rem;
     font-family: var(--document-font);
     color: black;
+    font-weight: 600;
 }
 
 /* Content Layout */
 .section-wrapper {
-    max-width: 1200px;
+    width: 92%;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 0;
 }
 
 /* heading alignment overrides */
@@ -156,7 +175,7 @@ header h1 {
 }
 
 #fifth-heading {
-    font-size: 50px;
+    font-size: 2rem;
 }
 
 /* Skincare Essentials */
@@ -176,7 +195,7 @@ header h1 {
 .image-wrapper {
     position: relative;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     border-radius: 12px;
     overflow: hidden;
     /* overflow clips the image so border-radius shows properly */
@@ -204,15 +223,15 @@ header h1 {
 .photo-card h3 {
     font-family: var(--heading-font);
     color: var(--palette-black);
-    font-size: 1.25rem;
-    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    margin: 0 0 6px 0;
 }
 
 .photo-card p {
     font-family: var(--document-font);
     color: var(--palette-gray);
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.88rem;
+    line-height: 1.45;
     margin: 0;
 }
 
@@ -231,7 +250,8 @@ header h1 {
 
 .concern-card img {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
+    max-height: 280px;
     object-fit: cover;
     display: block;
 }
@@ -243,7 +263,7 @@ header h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: background-color 0.3s ease;
 }
@@ -251,15 +271,15 @@ header h1 {
 .concern-content h2 {
     font-family: var(--heading-font);
     color: var(--palette-dirty-white);
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: normal;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
 }
 
 .concern-content a {
     font-family: var(--document-font);
     color: var(--palette-white);
-    font-size: 1rem;
+    font-size: 0.92rem;
     text-decoration: underline;
     text-underline-offset: 4px;
     transition: color 0.2s ease;
@@ -277,25 +297,30 @@ header h1 {
 .feedback-container {
     display: flex;
     justify-content: space-between;
-    gap: 24px;
+    gap: 20px;
 }
 
 .feedback-card {
     flex: 1;
     min-width: 0;
     background-color: var(--palette-white);
-    padding: 24px;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .feedback-card h2 {
     font-family: var(--document-font);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 14px 0;
 }
 
 .profile {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .profile div {
@@ -306,13 +331,15 @@ header h1 {
 }
 
 .profile-name {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     margin-bottom: 0;
     color: var(--palette-black);
 }
 
 .profile p {
     font-family: var(--document-font);
+    font-size: 0.85rem;
     margin-top: 0;
     color: var(--palette-gray);
 }
@@ -321,6 +348,7 @@ header h1 {
 .white-bg {
     background: var(--palette-white);
     width: 100%;
+    padding: 20px 0;
 }
 
 #center-all {
@@ -328,9 +356,12 @@ header h1 {
 }
 
 #prototype-description {
-    font-size: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
     text-align: center;
     font-family: var(--document-font);
+    max-width: 620px;
+    margin: 0 auto 20px auto;
 }
 
 /* override .btn colors for apply button */
@@ -343,22 +374,23 @@ header h1 {
 footer {
     background-color: var(--palette-dark-green);
     color: var(--palette-dirty-white);
-    padding: 60px 5%;
+    padding: 40px 4%;
 }
 
 .footer-container {
-    max-width: 1200px;
+    width: 92%;
+    max-width: var(--container-max-width);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 40px;
+    gap: 30px;
 }
 
 .footer-brand h2 {
     font-family: var(--heading-font);
-    font-size: 1.8rem;
-    margin: 0 0 16px 0;
+    font-size: 1.5rem;
+    margin: 0 0 12px 0;
     color: var(--palette-dirty-white);
 }
 
@@ -412,10 +444,7 @@ footer {
 /* have multiple colors */
 .palette-overlay {                                                                                                                                                                                           
     position: absolute;                                                                                                                                                                                      
-    top: 0;                                                                                                                                                                                                  
-    bottom: 0;                                                                                                                                                                                               
-    left: 20px;                                                                                                                                                                                              
-    right: 20px;                                                                                                                                                                                             
+    inset: 0;
     background-color: rgba(43, 80, 46, 0.55);                                                                                                                                                                
     border-radius: 12px;
     pointer-events: none;
@@ -436,5 +465,272 @@ footer {
 
 .palette-overlay.dirty-white {
     background-color: rgba(249, 245, 236, 0.33);
+}
+
+/* AUTH PAGES (LOGIN & SIGNUP / REGISTER) */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--palette-dirty-white);
+}
+
+.auth-page-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.auth-card {
+    background-color: var(--palette-white);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 12px 35px rgba(43, 80, 46, 0.08);
+    border: 1px solid rgba(43, 80, 46, 0.1);
+    animation: fadeInAuth 0.35s ease-in-out;
+}
+
+/* for animating thing. it goes up */
+@keyframes fadeInAuth {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-header .brand-badge {
+    display: inline-block;
+    font-family: var(--document-font);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--palette-light-green);
+    background-color: rgba(131, 162, 126, 0.14);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.auth-header h1 {
+    font-family: var(--heading-font);
+    color: var(--palette-dark-green);
+    font-size: 2.2rem;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.auth-header p {
+    font-family: var(--document-font);
+    color: var(--palette-gray);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* the div for all input fields */
+.auth-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.auth-form-group label {
+    font-family: var(--document-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--palette-dark-green);
+}
+
+/* icon and input */
+.auth-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.auth-input-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--palette-light-green);
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+.auth-input-wrapper input {
+    width: 100%;
+    padding: 13px 16px 13px 44px;
+    font-family: var(--document-font);
+    font-size: 0.95rem;
+    border: 1.5px solid #d8e2d7;
+    border-radius: 10px;
+    background-color: #fafbfc;
+    color: var(--palette-black);
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+/* focus is when clicked or using this element */
+.auth-input-wrapper input:focus {
+    background-color: var(--palette-white);
+    border-color: var(--palette-dark-green);
+    box-shadow: 0 0 0 3.5px rgba(43, 80, 46, 0.12);
+}
+
+.auth-input-wrapper input::placeholder {
+    color: #999999;
+}
+
+.auth-btn-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    font-family: var(--document-font);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--palette-white);
+    background-color: var(--palette-dark-green);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(43, 80, 46, 0.2);
+}
+
+.auth-btn-submit:hover {
+    background-color: var(--palette-light-green);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(43, 80, 46, 0.25);
+}
+
+.auth-btn-submit:active {
+    transform: translateY(0);
+}
+
+.auth-alert-error {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-family: var(--document-font);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.auth-footer-nav {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: var(--document-font);
+    font-size: 0.92rem;
+    color: var(--palette-gray);
+}
+
+.auth-footer-nav a {
+    color: var(--palette-dark-green);
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+
+.auth-footer-nav a:hover {
+    color: var(--palette-light-green);
+    text-decoration: underline;
+}
+
+@media (max-width: 540px) {
+    .auth-card {
+        padding: 30px 20px;
+    }
+    
+    .auth-page-container {
+        padding: 30px 16px;
+    }
+}
+
+/* Auth Success Card */
+.auth-success-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    background-color: rgba(131, 162, 126, 0.18);
+    color: var(--palette-dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    animation: scaleInCheck 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleInCheck {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.auth-success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.auth-btn-secondary {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-family: var(--document-font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--palette-dark-green);
+    background-color: transparent;
+    border: 1.5px solid var(--palette-dark-green);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.auth-btn-secondary:hover {
+    background-color: rgba(43, 80, 46, 0.08);
+}
+
+.auth-redirect-notice {
+    font-family: var(--document-font);
+    font-size: 0.86rem;
+    color: var(--palette-gray);
+    margin: 20px 0 0 0;
 }
 
