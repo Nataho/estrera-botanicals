@@ -13,21 +13,21 @@
             <div class="footer-links">
                 <div class="footer-column">
                     <h3>Shop</h3>
-                    <a href="#none">NEW</a>
-                    <a href="#none">SETS</a>
-                    <a href="#none">BUILD YOUR BUNDLE</a>
+                    <a href="<?= BASE_URL ?>shop">NEW</a>
+                    <a href="<?= BASE_URL ?>shop?filter=best_sellers">SETS</a>
+                    <a href="<?= BASE_URL ?>shop">BUILD YOUR BUNDLE</a>
                 </div>
                 <div class="footer-column">
                     <h3>Learn</h3>
-                    <a href="#none">ABOUT US</a>
-                    <a href="#none">SUSTAINABILITY</a>
-                    <a href="#none">GET A FREE GIFT</a>
+                    <a href="<?= BASE_URL ?>about-us">ABOUT US</a>
+                    <a href="<?= BASE_URL ?>faq#sustainability">SUSTAINABILITY</a>
+                    <a href="<?= BASE_URL ?>#fifth-heading">GET A FREE GIFT</a>
                 </div>
                 <div class="footer-column">
                     <h3>Help</h3>
-                    <a href="#none">FAQs</a>
-                    <a href="#none">RETURNS</a>
-                    <a href="#none">SHIPPING & DELIVERY</a>
+                    <a href="<?= BASE_URL ?>faq#faqs">FAQs</a>
+                    <a href="<?= BASE_URL ?>faq#returns">RETURNS</a>
+                    <a href="<?= BASE_URL ?>faq#shipping">SHIPPING & DELIVERY</a>
                 </div>
             </div>
         </div>

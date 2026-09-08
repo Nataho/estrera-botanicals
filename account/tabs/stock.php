@@ -62,8 +62,8 @@
                                     <form method="POST" class="stock-update-form" style="display: inline-flex; gap: 6px; align-items: center;">
                                         <input type="hidden" name="action" value="update_stock">
                                         <input type="hidden" name="product_id" value="<?= (int)$prod['product_id'] ?>">
-                                        <input type="number" name="stock_quantity" value="<?= $qty ?>" min="0" step="1" required class="stock-input">
-                                        <button type="submit" class="table-btn-action primary" title="Save Stock">
+                                        <input type="number" name="stock_quantity" value="<?= $qty ?>" data-initial="<?= $qty ?>" min="0" step="1" required class="stock-input">
+                                        <button type="submit" class="table-btn-action primary" title="Save Stock" disabled>
                                             <i class="fa-solid fa-check"></i> Save
                                         </button>
                                     </form>
@@ -78,4 +78,28 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.stock-update-form').forEach(form => {
+                const input = form.querySelector('.stock-input');
+                const btn = form.querySelector('button[type="submit"]');
+                if (!input || !btn) return;
+
+                const checkChanged = () => {
+                    const initial = String(input.dataset.initial ?? '').trim();
+                    const current = String(input.value ?? '').trim();
+                    // Enable only if non-empty, changed from initial, and valid non-negative integer
+                    if (current !== '' && current !== initial && Number(current) >= 0) {
+                        btn.removeAttribute('disabled');
+                    } else {
+                        btn.setAttribute('disabled', 'disabled');
+                    }
+                };
+
+                input.addEventListener('input', checkChanged);
+                input.addEventListener('change', checkChanged);
+            });
+        });
+    </script>
 </section>

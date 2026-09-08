@@ -63,6 +63,35 @@ body {
     transform: translateY(-1px);
 }
 
+/* Universal File Input Styling */
+input[type="file"] {
+    font-family: var(--document-font);
+    font-size: 0.88rem;
+    color: var(--palette-gray);
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button,
+input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--palette-dark-green);
+    color: var(--palette-white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--document-font);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: var(--palette-light-green);
+    transform: translateY(-1px);
+}
+
 /* Reusable section heading */
 .section-heading {
     font-family: var(--heading-font);

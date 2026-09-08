@@ -1,2 +1,5 @@
 .DS_Store
 .env
+/eb_shop.sql
+/TESTING.md
+/DOCUMENTATION.md

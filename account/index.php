@@ -357,8 +357,10 @@ if ($user->is_admin()) {
                 <!-- Avatar Change Form -->
                 <form class="avatar-upload-form" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="update_avatar">
-                    <label for="avatar_input">Change Profile Picture</label>
-                    <input type="file" id="avatar_input" name="avatar" accept="image/*" required style="font-size: 0.8rem; margin-bottom: 8px;" onchange="this.form.submit()">
+                    <label for="avatar_input" class="avatar-upload-label" title="Click to select a new profile photo">
+                        <i class="fa-solid fa-camera"></i> Change Photo
+                    </label>
+                    <input type="file" id="avatar_input" name="avatar" accept="image/*" required class="avatar-upload-input" onchange="this.form.submit()">
                 </form>
 
                 <!-- Left Navigation Tabs -->
