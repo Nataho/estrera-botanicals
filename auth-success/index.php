@@ -34,6 +34,7 @@ if ($auth_type === 'signup') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $heading ?> | Estrera Botanicals</title>
     <?php require ROOT_DIR . 'components/base_css.php'; ?>
+    <link rel="stylesheet" href="<?= BASE_URL ?>components/auth.css?v=<?= file_exists(ROOT_DIR . 'components/auth.css') ? filemtime(ROOT_DIR . 'components/auth.css') : '1' ?>">
 </head>
 <body class="auth-page">
     <?php require ROOT_DIR . 'components/header.php'; ?>

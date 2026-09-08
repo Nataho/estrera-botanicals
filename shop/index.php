@@ -111,6 +111,7 @@ if (!empty($message)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop | Estrera Botanicals</title>
     <?php require_once ROOT_DIR . 'components/base_css.php'; ?>
+    <link rel="stylesheet" href="style.css?v=<?= file_exists(__DIR__ . '/style.css') ? filemtime(__DIR__ . '/style.css') : '1' ?>">
 </head>
 <body>
     <?php require_once ROOT_DIR . 'components/header.php'; ?>
