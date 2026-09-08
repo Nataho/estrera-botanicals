@@ -19,7 +19,7 @@ if (current_user()->is_logged_in()) {
         <nav>
             <a class="heading-nav" href="<?= BASE_URL ?>">HOME</a>
             <a class="heading-nav" href="<?= BASE_URL ?>shop"> SHOP</a>
-            <a class="heading-nav" href="#none">BEST SELLERS</a>
+            <a class="heading-nav" href="<?= BASE_URL ?>shop?filter=best_sellers">BEST SELLERS</a>
             <a class="heading-nav" href="<?= BASE_URL ?>about-us">ABOUT US</a>
             <a class="heading-nav" id="heading-cta-button" href=<?= $heading_button_path ?>><?=$heading_button_text?></a>
         </nav>

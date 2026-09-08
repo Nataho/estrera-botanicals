@@ -36,6 +36,11 @@ class User {
         return $this->role === 'admin';
     }
 
+    // check if user is banned
+    public function is_banned(): bool {
+        return $this->role === 'banned';
+    }
+
     // authenticate and populate object + session
     public function login(string $user_input, string $password): bool {
         // can log in using either email or username
@@ -159,17 +164,45 @@ class User {
         return $res;
     }
 
-    // delete user account
+    // delete user account (admins cannot be deleted)
     public function delete_account(): bool {
-        if (!$this->id) return false;
+        if (!$this->id || $this->is_admin()) return false;
 
-        $stmt = $this->pdo->prepare("DELETE FROM users WHERE user_id = ?");
-        $res = $stmt->execute([$this->id]);
+        try {
+            $this->pdo->beginTransaction();
 
-        if ($res) {
-            $this->logout();
+            // 1. find all orders placed by this user
+            $stmt_orders = $this->pdo->prepare("SELECT order_id FROM orders WHERE user_id = ?");
+            $stmt_orders->execute([$this->id]);
+            $user_order_ids = $stmt_orders->fetchAll(PDO::FETCH_COLUMN);
+
+            // 2. delete order items for those orders
+            if (!empty($user_order_ids)) {
+                $placeholders = implode(',', array_fill(0, count($user_order_ids), '?'));
+                $stmt_items = $this->pdo->prepare("DELETE FROM order_items WHERE order_id IN ($placeholders)");
+                $stmt_items->execute($user_order_ids);
+            }
+
+            // 3. delete user orders
+            $stmt_del_orders = $this->pdo->prepare("DELETE FROM orders WHERE user_id = ?");
+            $stmt_del_orders->execute([$this->id]);
+
+            // 4. delete the user record
+            $stmt = $this->pdo->prepare("DELETE FROM users WHERE user_id = ?");
+            $res = $stmt->execute([$this->id]);
+
+            $this->pdo->commit();
+
+            if ($res) {
+                $this->logout();
+            }
+
+            return $res;
+        } catch (Exception $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
+            return false;
         }
-
-        return $res;
     }
 }
